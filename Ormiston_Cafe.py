@@ -29,12 +29,14 @@ class Menu:
     self.menu_frame.place(x = 325, y = 0)
     self.side_fliter.grid(row = 0 ,column = 0)
 
+    menulabel = Label(self.menu_frame, text = "Menu Goes Here")
+    menulabel.grid()
+
     btn1 = Button(root, text = "Sandwich", relief = "groove", command = None)
     btn2 = Button(root, text = "With Rice", relief = "groove", command = None)
     btn3 = Button(root, text = "Salads", relief = "groove", command = None)
     btn4 = Button(root, text = "Desserts", relief = "groove", command = None)
     btn5 = Button(root, text = "Drinks", relief = "groove")
-
     btn1.grid(sticky = "NW")
     btn2.grid(sticky = "NW")
     btn3.grid(sticky = "NW")
@@ -50,9 +52,9 @@ class Menu:
 
 if __name__ == "__main__":
   root = Tk()
+  Main(root)
   root.title("Ormiston Senior College Cafe")
   root.geometry("750x500")
   root.update()
   root.minsize(root.winfo_width(), root.winfo_height())
-  Menu(root)
   root.mainloop()
