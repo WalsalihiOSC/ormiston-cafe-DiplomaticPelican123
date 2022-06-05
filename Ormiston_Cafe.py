@@ -140,7 +140,7 @@ class Checkout:
 
     ''' Main Frames '''
     self.checkout_frame = Frame(root, height = 250, width = 250, highlightbackground = "black", highlightthickness = 1)
-    self.checkout_frame.place(x = 275, y = 150)
+    self.checkout_frame.place(x = 525, y = 150)
 
     ''' Displaying Elements '''
     money = Label(self.checkout_frame, text = "Give Money Here:")
