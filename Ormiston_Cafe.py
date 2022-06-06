@@ -62,75 +62,58 @@ class Menu:
         break
       if x == 3:
         x = 0
-        y = y+1
+        y +=1
       name = entry["name"]
       Label(self.burger_frame, text = f"{name}").grid(column = x, row = y)
-      x = x+1
+      x +=1
 
     ''' With Rice Options '''
-    butter_chicken_rice = Label(self.withrice_frame, text = "Butter Chicken")
-    lamb_curry = Label(self.withrice_frame, text = "Lamb Curry")
-    potato_curry = Label(self.withrice_frame, text = "Potato Curry")
-    sushi = Label(self.withrice_frame, text = "Chicken Teriyaki Sushi")
-    katsu = Label(self.withrice_frame, text = "Katsu Chicken")
-    risotto = Label(self.withrice_frame, text = "Mushroom Risotto")
-    paella = Label(self.withrice_frame, text = "Chicken Paella")
-    vege_fried_rice = Label(self.withrice_frame, text = "Vegetarian Fried Rice")
-    onigiri = Label(self.withrice_frame, text = "Onigiri (Rice Ball)")
-    butter_chicken_rice.grid(row = 0, column = 0)
-    lamb_curry.grid(row = 0, column = 1)
-    potato_curry.grid(row = 0, column = 2)
-    sushi.grid(row = 1, column = 0)
-    katsu.grid(row = 1, column = 1)
-    risotto.grid(row = 1, column = 2)
-    paella.grid(row = 2, column = 0)
-    vege_fried_rice.grid(row = 2, column = 1)
-    onigiri.grid(row = 2, column = 2)
+    x = y = 0
+    for entry in self.csv_data:
+      if entry["category"] != "Withrice":
+        break
+      if x == 3:
+        x = 0
+        y +=1
+        name = entry["name"]
+        Label(self.withrice_frame, text = f"{name}").grid(column = x, row = y)
+        x +=1
 
     ''' Salad Options '''
-    greek_salad = Label(self.salads_frame, text = "Greek Salad")
-    pasta_salad = Label(self.salads_frame, text = "Italian Pasta Salad")
-    caesar_salad = Label(self.salads_frame, text = "Caesar Salad")
+    x = y = 0
+    for entry in self.csv_data:
+      if entry["category"] != "Salad":
+        break
+      if x == 3:
+        x = 0
+        y +=1
+        name = entry["name"]
+        Label(self.salads_frame, text = f"{name}").grid(column = x, row = y)
+        x +=1
 
     ''' Dessert Options '''
-    creme_brulee = Label(self.dessert_frame, text = "Creme Brulee")
-    ice_cream = Label(self.dessert_frame, text = "Ice-Cream")
-    cheesecake = Label(self.dessert_frame, text = "Cheesecake")
-    banana_split = Label(self.dessert_frame, text = "Banana Split")
-    carrot_cake = Label(self.dessert_frame, text = "Carrot Cake")
-    pecan_pie = Label(self.dessert_frame, text = "Pecan Pie")
-    apple_crumble = Label(self.dessert_frame, text = "Apple Crumble")
-    banana_pudding = Label(self.dessert_frame, text = "Banana Pudding")
-    cookie = Label(self.dessert_frame, text = "Chocolate Cookies")
-    creme_brulee.grid(row = 0, column = 0)
-    ice_cream.grid(row = 0, column = 1)
-    cheesecake.grid(row = 0, column = 2)
-    banana_split.grid(row = 1, column = 0)
-    carrot_cake.grid(row = 1, column = 1)
-    pecan_pie.grid(row = 1, column = 2)
-    apple_crumble.grid(row = 2, column = 0)
-    banana_pudding.grid(row = 2, column = 1)
-    cookie.grid(row = 2, column = 2)
+    x = y = 0
+    for entry in self.csv_data:
+      if entry["category"] != "Dessert":
+        break
+      if x == 3:
+        x = 0
+        y +=1
+        name = entry["name"]
+        Label(self.dessert_frame, text = f"{name}").grid(column = x, row = y)
+        x +=1
 
     ''' Drink Options '''
-    coke = Label(self.drink_frame, text = "Coke")
-    sprite = Label(self.drink_frame, text = "Sprite")
-    fanta = Label(self.drink_frame, text = "Fanta")
-    nz_drink = Label(self.drink_frame, text = "L&P")
-    seven_up = Label(self.drink_frame, text = "7-UP")
-    lift = Label(self.drink_frame, text = "Lift")
-    hot_choc = Label(self.drink_frame, text = "Hot Chocolate")
-    latte = Label(self.drink_frame, text = "Latte")
-    chai = Label(self.drink_frame, text = "Chai Latte")
-    coke.grid(row = 0, column = 0)
-    sprite.grid(row = 0, column = 1)
-    fanta.grid(row = 0, column = 2)
-    nz_drink.grid(row = 1, column = 0)
-    seven_up.grid(row = 1, column = 1)
-    lift.grid(row = 1, column = 2)
-    hot_choc.grid(row = 2, column = 0)
-    latte.grid(row = 2, column = 1)
-    chai.grid(row = 2, column = 2)
+    x = y = 0
+    for entry in self.csv_data:
+      if entry["category"] != "Drink":
+        break
+      if x == 3:
+        x = 0
+        y +=1
+        name = entry["name"]
+        Label(self.drink_frame, text = f"{name}").grid(column = x, row = y)
+        x +=1
 
     ''' Menu Filters (Buttons) '''
     btn1 = Button(self.side_fliter, text = "Burger", relief = "groove", command = self.burger)
