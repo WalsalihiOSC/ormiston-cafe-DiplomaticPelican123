@@ -1,23 +1,20 @@
-import csv
+import json
 from tkinter import *
 from PIL import ImageTk,Image
-
-class FileHandling:
-  def __init__(self):
-    self.csv_data = self.text_file_manager()
-
-  def text_file_manager(self):
-    data = []
-    with open("Data/data.csv", "r") as file:
-      reader = csv.DictReader(file)
-      for row in reader:
-        data.append(row)
-    return(data)
 
 class Main:
   def __init__(self, root):
     self.root = root
+    img = ImageTk.PhotoImage(Image.open("Image/tim_bootingjpg.jpg"))
+    img2 = ImageTk.PhotoImage(Image.open("Image/osc.jpg"))
 
+    l1 = Label(root, image = img)
+    l1.image = img
+    l1.grid()
+
+    l2 = Label(root, image = img2)
+    l2.image = img2
+    l2.grid()
     self.intro_frame = Frame(root, width = 250, height = 250, highlightbackground = "black", highlightthickness = 1)
     self.intro_frame.place(x = 500, y = 100)
 
@@ -35,8 +32,9 @@ class Main:
 class Menu:
   def __init__(self, root):
     self.root = root
-    self.database = FileHandling()
-    self.csv_data = self.database.csv_data
+
+    with open("menu.json", "r") as file:
+      self.database = json.load(file)
 
     ''' Main Frames '''
     self.master_frame = Frame(root, highlightbackground="black", highlightthickness = 1)
@@ -54,66 +52,16 @@ class Menu:
     self.salads_frame = Frame(self.master_frame)
     self.dessert_frame = Frame(self.master_frame)
     self.drink_frame = Frame(self.master_frame)
+    self.frames = [self.burger_frame, self.withrice_frame, self.salads_frame, self.dessert_frame, self.drink_frame]
 
-    ''' Burger Options '''
+
     x = y = 0
-    for entry in self.csv_data:
-      if entry["category"] != "Burger":
-        break
+    for i in self.database["Burgers"]:
       if x == 3:
         x = 0
-        y +=1
-      name = entry["name"]
-      Label(self.burger_frame, text = f"{name}").grid(column = x, row = y)
-      x +=1
-
-    ''' With Rice Options '''
-    x = y = 0
-    for entry in self.csv_data:
-      if entry["category"] != "Withrice":
-        break
-      if x == 3:
-        x = 0
-        y +=1
-        name = entry["name"]
-        Label(self.withrice_frame, text = f"{name}").grid(column = x, row = y)
-        x +=1
-
-    ''' Salad Options '''
-    x = y = 0
-    for entry in self.csv_data:
-      if entry["category"] != "Salad":
-        break
-      if x == 3:
-        x = 0
-        y +=1
-        name = entry["name"]
-        Label(self.salads_frame, text = f"{name}").grid(column = x, row = y)
-        x +=1
-
-    ''' Dessert Options '''
-    x = y = 0
-    for entry in self.csv_data:
-      if entry["category"] != "Dessert":
-        break
-      if x == 3:
-        x = 0
-        y +=1
-        name = entry["name"]
-        Label(self.dessert_frame, text = f"{name}").grid(column = x, row = y)
-        x +=1
-
-    ''' Drink Options '''
-    x = y = 0
-    for entry in self.csv_data:
-      if entry["category"] != "Drink":
-        break
-      if x == 3:
-        x = 0
-        y +=1
-        name = entry["name"]
-        Label(self.drink_frame, text = f"{name}").grid(column = x, row = y)
-        x +=1
+        y = y+1
+      Burgers = self.database["Burgers"]
+      Label(self.burger_frame, text = Burgers).grid(row = y, column = x)
 
     ''' Menu Filters (Buttons) '''
     btn1 = Button(self.side_fliter, text = "Burger", relief = "groove", command = self.burger)

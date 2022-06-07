@@ -1,0 +1,56 @@
+{
+  "Burgers": {
+    "Chicken burger": 5,
+    "Beef Burger": 4.50,
+    "Vege Burger": 4.50,
+    "Butter Chicken": 6.00,
+    "Pizza Burger": 5.00,
+    "Supreme Burger": 8.00,
+    "Potato Corn": 5.00,
+    "Chilli Burger": 4.00,
+    "Lamb Burger": 5.00
+  },
+  "With rice": {
+    "Butter Chicken Rice": 5.50,
+    "Lamb Curry": 5.00,
+    "Potato Curry": 4.00,
+    "Sushi": 3.00,
+    "Katsu": 5.00,
+    "Risotto": 5.50,
+    "Paella": 6.00,
+    "Vege Fried Rice": 5.00,
+    "Onigiri": 3.00
+  },
+  "Salads": {
+    "Greek Salad": 4.00,
+    "Pasta Salad": 4.50,
+    "Caesar Salad": 4.50,
+    "Summer Corn Salad": 6.00,
+    "Chick-pea Salad": 5.00,
+    "Grilled Shrimp Salad": 6.00,
+    "Macaroni Salad": 6.00,
+    "Cucumber Salad": 5.69,
+    "Kale Salad": 7.00
+  },
+  "Desserts": {
+    "Ice Cream": 5.00,
+    "Cheesecake": 5.00,
+    "Banana Split": 5.00,
+    "Carrot Cake": 5.00,
+    "Pecan Pie": 5.00,
+    "Apple Crumble": 5.00,
+    "Banana Pudding": 5.00,
+    "Cookie": 5.00
+  },
+  "Drinks": {
+    "Coke": 2.50,
+    "Sprite": 2.50,
+    "Fanta": 2.50,
+    "L&P": 2.50,
+    "7-Up": 2.50,
+    "Lift": 2.50,
+    "Hot Chocolate": 4.00,
+    "Latte": 4.00,
+    "Chai Latte": 4.00
+  }
+}
