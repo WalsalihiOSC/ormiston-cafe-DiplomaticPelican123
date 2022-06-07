@@ -1,0 +1,223 @@
+[
+    {
+        "name": "Chicken Burger",
+        "price": "5.00",
+        "category": "Burger"
+    },
+    {
+        "name": "Beef Burger",
+        "price": "4.50",
+        "category": "Burger"
+    },
+    {
+        "name": "Vege Burger",
+        "price": "4.50",
+        "category": "Burger"
+    },
+    {
+        "name": "Butter Chicken",
+        "price": "6.00",
+        "category": "Burger"
+    },
+    {
+        "name": "Pizza Burger",
+        "price": "5.00",
+        "category": "Burger"
+    },
+    {
+        "name": "Supreme Burger",
+        "price": "8.00",
+        "category": "Burger"
+    },
+    {
+        "name": "Potato Corn",
+        "price": "5.00",
+        "category": "Burger"
+    },
+    {
+        "name": "Chilli Burger",
+        "price": "4.00",
+        "category": "Burger"
+    },
+    {
+        "name": "Lamb Burger",
+        "price": "5.00",
+        "category": "Burger"
+    },
+    {
+        "name": "Butter Chicken Rice",
+        "price": "5.50",
+        "category": "Withrice"
+    },
+    {
+        "name": "Lamb Curry",
+        "price": "5.00",
+        "category": "Withrice"
+    },
+    {
+        "name": "Potato Curry",
+        "price": "4.00",
+        "category": "Withrice"
+    },
+    {
+        "name": "Sushi",
+        "price": "3.00",
+        "category": "Withrice"
+    },
+    {
+        "name": "Katsu",
+        "price": "5.00",
+        "category": "Withrice"
+    },
+    {
+        "name": "Risotto",
+        "price": "5.50",
+        "category": "Withrice"
+    },
+    {
+        "name": "Paella",
+        "price": "6.00",
+        "category": "Withrice"
+    },
+    {
+        "name": "Vege Fried Rice",
+        "price": "5.00",
+        "category": "Withrice",
+        "size": null
+    },
+    {
+        "name": "Onigiri",
+        "price": "3.00",
+        "category": "Withrice"
+    },
+    {
+        "name": "Greek Salad",
+        "price": "4.00",
+        "category": "Salad"
+    },
+    {
+        "name": "Pasta Salad",
+        "price": "4.50",
+        "category": "Salad"
+    },
+    {
+        "name": "Caesar Salad",
+        "price": "4.50",
+        "category": "Salad"
+    },
+    {
+        "name": "Summer Corn Salad",
+        "price": "6.00",
+        "category": "Salad"
+    },
+    {
+        "name": "Chick-pea Salad",
+        "price": "5.00",
+        "category": "Salad"
+    },
+    {
+        "name": "Grilled Shrimp Salad",
+        "price": "6.00",
+        "category": "Salad"
+    },
+    {
+        "name": "Macaroni Salad",
+        "price": "6.00",
+        "category": "Salad"
+    },
+    {
+        "name": "Cucumber Salad",
+        "price": "5.69",
+        "category": "Salad"
+    },
+    {
+        "name": "Kale Salad",
+        "price": "7.00",
+        "category": "Salad"
+    },
+    {
+        "name": "Ice Cream",
+        "price": "5.00",
+        "category": "Dessert"
+    },
+    {
+        "name": "Cheesecake",
+        "price": "5.00",
+        "category": "Dessert"
+    },
+    {
+        "name": "Banana Split",
+        "price": "5.00",
+        "category": "Dessert"
+    },
+    {
+        "name": "Carrot Cake",
+        "price": "5.00",
+        "category": "Dessert"
+    },
+    {
+        "name": "Pecan Pie",
+        "price": "5.00",
+        "category": "Dessert"
+    },
+    {
+        "name": "Apple Crumble",
+        "price": "5.00",
+        "category": "Dessert"
+    },
+    {
+        "name": "Banana Pudding",
+        "price": "5.00",
+        "category": "Dessert"
+    },
+    {
+        "name": "Cookie",
+        "price": "5.00",
+        "category": "Dessert"
+    },
+    {
+        "name": "Coke",
+        "price": "2.50",
+        "category": "Drink"
+    },
+    {
+        "name": "Sprite",
+        "price": "2.50",
+        "category": "Drink"
+    },
+    {
+        "name": "Fanta",
+        "price": "2.50",
+        "category": "Drink"
+    },
+    {
+        "name": "L&P",
+        "price": "2.50",
+        "category": "Drink"
+    },
+    {
+        "name": "7-Up",
+        "price": "2.50",
+        "category": "Drink"
+    },
+    {
+        "name": "Lift",
+        "price": "2.50",
+        "category": "Drink"
+    },
+    {
+        "name": "Hot Chocolate",
+        "price": "4.00",
+        "category": "Drink"
+    },
+    {
+        "name": "Latte",
+        "price": "4.00",
+        "category": "Drink"
+    },
+    {
+        "name": "Chai Latte",
+        "price": "4.00",
+        "category": "Drink"
+    }
+]

@@ -1,6 +1,6 @@
 import json
 from tkinter import *
-from PIL import ImageTk,Image
+from PIL import ImageTk,Image # Make sure to pip install PILLOW
 
 class Main:
   def __init__(self, root):
@@ -33,7 +33,7 @@ class Menu:
   def __init__(self, root):
     self.root = root
 
-    with open("menu.json", "r") as file:
+    with open("data.json", "r") as file:
       self.database = json.load(file)
 
     ''' Main Frames '''
@@ -54,14 +54,10 @@ class Menu:
     self.drink_frame = Frame(self.master_frame)
     self.frames = [self.burger_frame, self.withrice_frame, self.salads_frame, self.dessert_frame, self.drink_frame]
 
-
-    x = y = 0
-    for i in self.database["Burgers"]:
-      if x == 3:
-        x = 0
-        y = y+1
-      Burgers = self.database["Burgers"]
-      Label(self.burger_frame, text = Burgers).grid(row = y, column = x)
+    for i in self.database:
+        if i['category'] != 'Burger':
+            continue
+        print(i['category']) 
 
     ''' Menu Filters (Buttons) '''
     btn1 = Button(self.side_fliter, text = "Burger", relief = "groove", command = self.burger)
