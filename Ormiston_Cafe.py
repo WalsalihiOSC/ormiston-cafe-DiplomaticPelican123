@@ -1,37 +1,18 @@
 import json
 from tkinter import *
-from PIL import ImageTk,Image # Make sure to pip install PILLOW
-
-class Main:
-  def __init__(self, root):
-    self.root = root
-    img = ImageTk.PhotoImage(Image.open("Image/tim_bootingjpg.jpg"))
-    img2 = ImageTk.PhotoImage(Image.open("Image/osc.jpg"))
-
-    l1 = Label(root, image = img)
-    l1.image = img
-    l1.grid()
-
-    l2 = Label(root, image = img2)
-    l2.image = img2
-    l2.grid()
-    self.intro_frame = Frame(root, width = 250, height = 250, highlightbackground = "black", highlightthickness = 1)
-    self.intro_frame.place(x = 500, y = 100)
-
-    intro_label = Label(self.intro_frame, text = "Ormiston Senior College Maca's", anchor = CENTER)
-    intro_label.place(x = 35  , y = 110)
-
-    start_button = Button(self.intro_frame, text = "Order Now", command = self.menu)
-    start_button.place(x = 179, y = 222)
-
-  def menu(self):
-    self.intro_frame.destroy()
-    Menu(root)
-
+from PIL import ImageTk,Image # Make sure to "pip install PILLOW"
 
 class Menu:
   def __init__(self, root):
     self.root = root
+
+    IMG_LIST = [
+      ImageTk.PhotoImage(Image.open("Image/osc.jpg"))
+    ]
+
+    l1 = Label(root, image = IMG_LIST[1])
+    l1.image = IMG_LIST[1]
+    l1.grid()
 
     with open("data.json", "r") as file:
       self.database = json.load(file)
@@ -40,9 +21,9 @@ class Menu:
     self.master_frame = Frame(root, highlightbackground="black", highlightthickness = 1)
     self.side_fliter = Frame(root)
     self.order_frame = Frame(root, highlightbackground="black", highlightthickness = 1)
-    self.master_frame.place(x = 500, y = 0)
+    self.master_frame.place(relx = 0.5, rely = 0, anchor = N)
     self.side_fliter.grid(row = 0 ,column = 0)
-    self.order_frame.place(x = 1100, y = 0)
+    self.order_frame.place(relx = 0.9, rely = 0)
 
     ''' Menu Frames '''
     test = Label(self.order_frame, text = "Order List ://")
@@ -53,11 +34,6 @@ class Menu:
     self.dessert_frame = Frame(self.master_frame)
     self.drink_frame = Frame(self.master_frame)
     self.frames = [self.burger_frame, self.withrice_frame, self.salads_frame, self.dessert_frame, self.drink_frame]
-
-    for i in self.database:
-        if i['category'] != 'Burger':
-            continue
-        print(i['category']) 
 
     ''' Menu Filters (Buttons) '''
     btn1 = Button(self.side_fliter, text = "Burger", relief = "groove", command = self.burger)
@@ -75,28 +51,73 @@ class Menu:
 
     ''' Displaying Menu's Functions and other Functions '''
   def burger(self):
+    x = y = 0
     for child in self.master_frame.winfo_children():
       child.grid_forget()
+    for i in self.database:
+        if i['category'] == 'Burger':
+          txt = i["name"]
+          if x == 3:
+            x = 0
+            y = y+1
+          Label(self.burger_frame, text = txt).grid(column = x, row = y)
+          x = x+1
     self.burger_frame.grid()
 
   def withrice(self):
+    x = y = 0
     for child in self.master_frame.winfo_children():
       child.grid_forget()
+    for i in self.database:
+      if i["category"] == "Withrice":
+        txt = i["name"]
+        if x == 3:
+          x = 0
+          y = y+1
+        Label(self.withrice_frame, text = txt).grid(column = y, row = x)
+        x = x+1
     self.withrice_frame.grid()
 
   def salad(self):
+    x = y = 0
     for child in self.master_frame.winfo_children():
       child.grid_forget()
+    for i in self.database:
+      if i["category"] == "Salad":
+        txt = i["name"]
+        if x == 3:
+          x = 0
+          y = y+1
+        Label(self.salads_frame, text = txt).grid(column = y, row = x)
+        x = x+1
     self.salads_frame.grid()
   
   def dessert(self):
+    x = y = 0
     for child in self.master_frame.winfo_children():
       child.grid_forget()
+    for i in self.database:
+      if i["category"] == "Dessert":
+        txt = i["name"]
+        if x == 3:
+          x = 0
+          y = y+1
+        Label(self.dessert_frame, text = txt).grid(column = y, row = x)
+        x = x+1
     self.dessert_frame.grid()
 
   def drink(self):
+    x = y = 0
     for child in self.master_frame.winfo_children():
       child.grid_forget()
+    for i in self.database:
+      if i["category"] == "Drink":
+        txt = i["name"]
+        if x == 3:
+          x = 0
+          y = y+1
+        Label(self.drink_frame, text = txt).grid(column = y, row = x)
+        x = x+1
     self.drink_frame.grid()
 
   def checkout(self):
@@ -148,9 +169,9 @@ class Checkout:
 
 if __name__ == "__main__":
   root = Tk()
-  Main(root)
+  Menu(root)
   root.title("Ormiston Senior College Cafe")
-  root.geometry("1250x500")
+  root.geometry("800x600")
   root.update()
   root.minsize(root.winfo_width(), root.winfo_height())
   root.mainloop()
