@@ -2,7 +2,8 @@
     {
         "name": "Chicken Burger",
         "price": "5.00",
-        "category": "Burger"
+        "category": "Burger",
+        "Image": "image/osc.jpg"
     },
     {
         "name": "Beef Burger",

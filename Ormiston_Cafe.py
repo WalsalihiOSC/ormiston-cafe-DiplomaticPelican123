@@ -1,3 +1,4 @@
+from cgitb import text
 import json
 from tkinter import *
 from PIL import ImageTk,Image # Make sure to "pip install PILLOW"
@@ -48,17 +49,17 @@ class Menu:
     ''' Displaying Menu's Items '''
   def burger(self):
     x = y = 0   # Using this to Grid my Menu Items
-    for child in self.master_frame.winfo_children():
-      child.grid_forget()
+    for child in self.master_frame.winfo_children():  # Checking for widgets in the frame selected
+      child.grid_forget()   # Deleting all the widgets in the frame
     for i in self.database:
         if i['category'] == 'Burger':
-          txt = i["name"]
+          txt = i["name"] # Putting all the menu items in a variable that equal to burger so I can use it later
           if x == 3:
-            x = 0
-            y = y+1
+            x = 0 # column = 0 once the widgets placed in 3x3 grid
+            y = y+1 # Puts the next set of menu items in the next row
           Button(self.burger_frame, text = txt).grid(column = x, row = y)
           x = x+1
-    self.burger_frame.grid()
+    self.burger_frame.grid()  # Griding the desired frame
 
   def withrice(self):
     x = y = 0   # Using this to Grid my Menu Items
@@ -127,6 +128,9 @@ class Checkout:
   def __init__(self, root):
     self.root = root
 
+    ''' Variables '''
+    self.change_var = IntVar()
+
     ''' Main Frames '''
     self.checkout_frame = Frame(root, height = 250, width = 250, highlightbackground = "black", highlightthickness = 1)
     self.checkout_frame.place(relx = 0.5, rely = 0.5, anchor = CENTER)
@@ -142,7 +146,7 @@ class Checkout:
     btn.grid(row = 3, column = 1, sticky = "E")
 
     ''' Displaying Elements (Again) '''
-    money_owing = Entry(self.checkout_frame)
+    money_owing = Entry(self.checkout_frame, textvariable = self.change_var)
     order_price_display = Label(self.checkout_frame, text = None)
     change_display = Label(self.checkout_frame, text = None)
     money_owing.grid(row = 0, column = 1)
