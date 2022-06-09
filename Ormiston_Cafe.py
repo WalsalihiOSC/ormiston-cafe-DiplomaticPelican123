@@ -2,20 +2,17 @@ import json
 from tkinter import *
 from PIL import ImageTk,Image # Make sure to "pip install PILLOW"
 
+''' Class 1 '''
 class Menu:
   def __init__(self, root):
     self.root = root
-
-    IMG_LIST = [
-      ImageTk.PhotoImage(Image.open("Image/osc.jpg"))
-    ]
-
-    l1 = Label(root, image = IMG_LIST[1])
-    l1.image = IMG_LIST[1]
-    l1.grid()
-
     with open("data.json", "r") as file:
       self.database = json.load(file)
+
+    IMG_LIST = [
+      ImageTk.PhotoImage(Image.open("Image/osc.jpg")),
+
+    ]
 
     ''' Main Frames '''
     self.master_frame = Frame(root, highlightbackground="black", highlightthickness = 1)
@@ -33,7 +30,6 @@ class Menu:
     self.salads_frame = Frame(self.master_frame)
     self.dessert_frame = Frame(self.master_frame)
     self.drink_frame = Frame(self.master_frame)
-    self.frames = [self.burger_frame, self.withrice_frame, self.salads_frame, self.dessert_frame, self.drink_frame]
 
     ''' Menu Filters (Buttons) '''
     btn1 = Button(self.side_fliter, text = "Burger", relief = "groove", command = self.burger)
@@ -49,9 +45,9 @@ class Menu:
     btn5.grid(sticky = "NW")
     btn6.grid(sticky = "SE")
 
-    ''' Displaying Menu's Functions and other Functions '''
+    ''' Displaying Menu's Items '''
   def burger(self):
-    x = y = 0
+    x = y = 0   # Using this to Grid my Menu Items
     for child in self.master_frame.winfo_children():
       child.grid_forget()
     for i in self.database:
@@ -60,12 +56,12 @@ class Menu:
           if x == 3:
             x = 0
             y = y+1
-          Label(self.burger_frame, text = txt).grid(column = x, row = y)
+          Button(self.burger_frame, text = txt).grid(column = x, row = y)
           x = x+1
     self.burger_frame.grid()
 
   def withrice(self):
-    x = y = 0
+    x = y = 0   # Using this to Grid my Menu Items
     for child in self.master_frame.winfo_children():
       child.grid_forget()
     for i in self.database:
@@ -74,12 +70,12 @@ class Menu:
         if x == 3:
           x = 0
           y = y+1
-        Label(self.withrice_frame, text = txt).grid(column = y, row = x)
+        Button(self.withrice_frame, text = txt).grid(column = y, row = x)
         x = x+1
     self.withrice_frame.grid()
 
   def salad(self):
-    x = y = 0
+    x = y = 0  # Using this to Grid my Menu Items
     for child in self.master_frame.winfo_children():
       child.grid_forget()
     for i in self.database:
@@ -88,12 +84,12 @@ class Menu:
         if x == 3:
           x = 0
           y = y+1
-        Label(self.salads_frame, text = txt).grid(column = y, row = x)
+        Button(self.salads_frame, text = txt).grid(column = y, row = x)
         x = x+1
     self.salads_frame.grid()
   
   def dessert(self):
-    x = y = 0
+    x = y = 0  # Using this to Grid my Menu Items
     for child in self.master_frame.winfo_children():
       child.grid_forget()
     for i in self.database:
@@ -102,7 +98,7 @@ class Menu:
         if x == 3:
           x = 0
           y = y+1
-        Label(self.dessert_frame, text = txt).grid(column = y, row = x)
+        Button(self.dessert_frame, text = txt).grid(column = y, row = x)
         x = x+1
     self.dessert_frame.grid()
 
@@ -116,7 +112,7 @@ class Menu:
         if x == 3:
           x = 0
           y = y+1
-        Label(self.drink_frame, text = txt).grid(column = y, row = x)
+        Button(self.drink_frame, text = txt).grid(column = y, row = x)
         x = x+1
     self.drink_frame.grid()
 
@@ -126,13 +122,14 @@ class Menu:
     Checkout(root)
 
 
+''' Class 2 '''
 class Checkout:
   def __init__(self, root):
     self.root = root
 
     ''' Main Frames '''
     self.checkout_frame = Frame(root, height = 250, width = 250, highlightbackground = "black", highlightthickness = 1)
-    self.checkout_frame.place(x = 525, y = 150)
+    self.checkout_frame.place(relx = 0.5, rely = 0.5, anchor = CENTER)
 
     ''' Displaying Elements '''
     money = Label(self.checkout_frame, text = "Give Money Here:")
