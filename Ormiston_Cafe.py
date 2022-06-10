@@ -1,4 +1,3 @@
-from cgitb import text
 import json
 from tkinter import *
 from PIL import ImageTk,Image # Make sure to "pip install PILLOW"
@@ -7,8 +6,13 @@ from PIL import ImageTk,Image # Make sure to "pip install PILLOW"
 class Menu:
   def __init__(self, root):
     self.root = root
+
+    ''' JSON File '''
     with open("data.json", "r") as file:
       self.database = json.load(file)
+
+    ''' Variables '''
+    self.menu_var = StringVar()
 
     IMG_LIST = [
       ImageTk.PhotoImage(Image.open("Image/osc.jpg")),
@@ -139,7 +143,7 @@ class Checkout:
     money = Label(self.checkout_frame, text = "Give Money Here:")
     order_price = Label(self.checkout_frame, text = "Order Price:")
     change = Label(self.checkout_frame, text = "Change:")
-    btn = Button(self.checkout_frame, text = "Calculate Change", command = None)
+    btn = Button(self.checkout_frame, text = "Calculate Change", command = self.calculate)
     money.grid(row = 0, column = 0)
     order_price.grid(row = 1, column = 0)
     change.grid(row = 2, column = 0)
@@ -148,10 +152,10 @@ class Checkout:
     ''' Displaying Elements (Again) '''
     money_owing = Entry(self.checkout_frame, textvariable = self.change_var)
     order_price_display = Label(self.checkout_frame, text = None)
-    change_display = Label(self.checkout_frame, text = None)
+    self.change_display = Label(self.checkout_frame, text = None)
     money_owing.grid(row = 0, column = 1)
     order_price_display.grid(row = 1, column = 1)
-    change_display.grid(row = 2, column = 1)
+    self.change_display.grid(row = 2, column = 1)
 
     ''' Buttons '''
     new_order_btn = Button(self.checkout_frame, text = "New Order", command = self.new_order)
@@ -160,6 +164,14 @@ class Checkout:
     quit_btn.grid(row = 4, column = 1, sticky = "E")
 
     ''' Functions '''
+  def calculate(self):
+    try:
+     x = self.change_var.get()
+     y = - x
+     self.change_display.configure(text = y)
+    except ValueError():
+      pass
+
   def quit(self):
     self.root.destroy()
 
