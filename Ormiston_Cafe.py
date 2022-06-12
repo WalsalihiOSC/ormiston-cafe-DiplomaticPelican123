@@ -58,10 +58,12 @@ class Menu:
     for i in self.database:
         if i['category'] == 'Burger':
           txt = i["name"] # Putting all the menu items in a variable that equal to burger so I can use it later
+          price = i["price"]
           if x == 3:
             x = 0 # column = 0 once the widgets placed in 3x3 grid
-            y = y+1 # Puts the next set of menu items in the next row
-          Button(self.burger_frame, text = txt).grid(column = x, row = y)
+            y = y+2 # Puts the next set of menu items in the next row
+          Label(self.burger_frame, text = txt).grid(column = x, row = y)
+          Button(self.burger_frame, text = price, command = lambda i=i:self.burger_info(i)).grid(column = x, row = y+1)
           x = x+1
     self.burger_frame.grid()  # Griding the desired frame
 
@@ -72,10 +74,12 @@ class Menu:
     for i in self.database:
       if i["category"] == "Withrice":
         txt = i["name"]
+        price = i["price"]
         if x == 3:
           x = 0
-          y = y+1
-        Button(self.withrice_frame, text = txt).grid(column = y, row = x)
+          y = y+2
+        Label(self.withrice_frame, text = txt).grid(column = x, row = y)
+        Button(self.withrice_frame, text = price, command = lambda i=i:self.withrice_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.withrice_frame.grid()
 
@@ -86,24 +90,28 @@ class Menu:
     for i in self.database:
       if i["category"] == "Salad":
         txt = i["name"]
+        price = i["price"]
         if x == 3:
           x = 0
-          y = y+1
-        Button(self.salads_frame, text = txt).grid(column = y, row = x)
+          y = y+2
+        Label(self.salads_frame, text = txt).grid(column = x, row = y)
+        Button(self.salads_frame, text = price, command = lambda i=i:self.salad_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.salads_frame.grid()
   
   def dessert(self):
-    x = y = 0  # Using this to Grid my Menu Items
+    x = y = 0  # Using this to Grid my Menu Items (labels)
     for child in self.master_frame.winfo_children():
       child.grid_forget()
     for i in self.database:
       if i["category"] == "Dessert":
         txt = i["name"]
+        price = i["price"]
         if x == 3:
           x = 0
-          y = y+1
-        Button(self.dessert_frame, text = txt).grid(column = y, row = x)
+          y = y+2
+        Label(self.dessert_frame, text = txt).grid(column = x, row = y)
+        Button(self.dessert_frame, text = price, command = lambda i=i:self.dessert_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.dessert_frame.grid()
 
@@ -114,10 +122,12 @@ class Menu:
     for i in self.database:
       if i["category"] == "Drink":
         txt = i["name"]
+        price = i["price"]
         if x == 3:
           x = 0
-          y = y+1
-        Button(self.drink_frame, text = txt).grid(column = y, row = x)
+          y = y+2
+        Label(self.drink_frame, text = txt).grid(column = x, row = y)
+        Button(self.drink_frame, text = price, command = lambda i=i:self.drink_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.drink_frame.grid()
 
@@ -126,6 +136,20 @@ class Menu:
     self.side_fliter.destroy()
     Checkout(root)
 
+  def burger_info(self, info):
+    pass
+
+  def withrice_info(self, info):
+    pass
+
+  def salad_info(self, info):
+    pass
+
+  def dessert_info(self, info):
+    pass
+
+  def drink_info(self, info):
+    pass
 
 ''' Class 2 '''
 class Checkout:
@@ -167,7 +191,7 @@ class Checkout:
   def calculate(self):
     try:
      x = self.change_var.get()
-     y = - x
+     y = 100 - x
      self.change_display.configure(text = y)
     except ValueError():
       pass
