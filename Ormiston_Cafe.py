@@ -25,11 +25,11 @@ class Menu:
     self.order_frame = Frame(root, highlightbackground="black", highlightthickness = 1)
     self.master_frame.place(relx = 0.5, rely = 0, anchor = N)
     self.side_fliter.grid(row = 0 ,column = 0)
-    self.order_frame.place(relx = 0.9, rely = 0)
+    self.order_frame.place(relx = 0.8, rely = 0)
 
     ''' Menu Frames '''
-    test = Label(self.order_frame, text = "Order List ://")
-    test.grid()
+    order = Label(self.order_frame, text = "Order List ://")
+    order.grid()
     self.burger_frame = Frame(self.master_frame)
     self.withrice_frame = Frame(self.master_frame)
     self.salads_frame = Frame(self.master_frame)
@@ -131,25 +131,37 @@ class Menu:
         x = x+1
     self.drink_frame.grid()
 
+    ''' Button Functions '''
+  def burger_info(self, info):
+    l1 = Label(self.order_frame, text = None)
+    l1.grid()
+    l1.configure(text = info["name"])
+      
+
+  def withrice_info(self, info):
+    l2 = Label(self.order_frame, text = None)
+    l2.grid()
+    l2.configure(text = info["name"])
+
+  def salad_info(self, info):
+    l3 = Label(self.order_frame, text = None)
+    l3.grid()
+    l3.configure(text = info["name"])
+
+  def dessert_info(self, info):
+    l4 = Label(self.order_frame, text = None)
+    l4.grid()
+    l4.configure(text = info["name"])
+
+  def drink_info(self, info):
+    l5 = Label(self.order_frame, text = None)
+    l5.grid()
+    l5.configure(text = info["name"])
+
   def checkout(self):
     self.master_frame.destroy()
     self.side_fliter.destroy()
     Checkout(root)
-
-  def burger_info(self, info):
-    pass
-
-  def withrice_info(self, info):
-    pass
-
-  def salad_info(self, info):
-    pass
-
-  def dessert_info(self, info):
-    pass
-
-  def drink_info(self, info):
-    pass
 
 ''' Class 2 '''
 class Checkout:
