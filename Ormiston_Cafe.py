@@ -28,8 +28,6 @@ class Menu:
     self.order_frame.place(relx = 0.8, rely = 0)
 
     ''' Menu Frames '''
-    order = Label(self.order_frame, text = "Order List ://")
-    order.grid()
     self.burger_frame = Frame(self.master_frame)
     self.withrice_frame = Frame(self.master_frame)
     self.salads_frame = Frame(self.master_frame)
@@ -50,7 +48,14 @@ class Menu:
     btn5.grid(sticky = "NW")
     btn6.grid(sticky = "SE")
 
-    ''' Displaying Menu's Items '''
+    ''' Menu List Buttons '''
+    self.order = Label(self.order_frame, text = "Order List ://")
+    self.order.grid()
+
+    self.clear_btn = Button(self.order_frame, text = "Clear All", command = self.clear_frame)
+    self.clear_btn.grid(sticky = S)
+
+    ''' Displaying Menu's Items '''  
   def burger(self):
     x = y = 0   # Using this to Grid my Menu Items
     for child in self.master_frame.winfo_children():  # Checking for widgets in the frame selected
@@ -133,30 +138,26 @@ class Menu:
 
     ''' Button Functions '''
   def burger_info(self, info):
-    l1 = Label(self.order_frame, text = None)
-    l1.grid()
-    l1.configure(text = info["name"])
+    Label(self.order_frame, text = info["name"]).grid()
       
-
   def withrice_info(self, info):
-    l2 = Label(self.order_frame, text = None)
-    l2.grid()
-    l2.configure(text = info["name"])
+    Label(self.order_frame, text = info["name"]).grid()
 
   def salad_info(self, info):
-    l3 = Label(self.order_frame, text = None)
-    l3.grid()
-    l3.configure(text = info["name"])
+    Label(self.order_frame, text = info["name"]).grid()
 
   def dessert_info(self, info):
-    l4 = Label(self.order_frame, text = None)
-    l4.grid()
-    l4.configure(text = info["name"])
+    Label(self.order_frame, text = info["name"]).grid()
 
   def drink_info(self, info):
-    l5 = Label(self.order_frame, text = None)
-    l5.grid()
-    l5.configure(text = info["name"])
+    Label(self.order_frame, text = info["name"]).grid()
+
+  def clear_frame(self):
+    for child in self.order_frame.winfo_children():
+      child.grid_forget()
+      
+    self.order.grid()
+    self.clear_btn.grid(sticky = S)
 
   def checkout(self):
     self.master_frame.destroy()
