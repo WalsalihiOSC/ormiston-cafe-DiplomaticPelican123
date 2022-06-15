@@ -2,17 +2,24 @@ import json
 from tkinter import *
 from PIL import ImageTk,Image # Make sure to "pip install PILLOW"
 
+''' Data Class '''
+class Data:
+  def __init__(self):
+
+    ''' Variables '''
+    self.test_var = IntVar()
+    self.change_var = IntVar()
+    self.price_list = []
+
 ''' Class 1 '''
 class Menu:
   def __init__(self, root):
     self.root = root
+    self.data = Data()
 
     ''' JSON File '''
     with open("data.json", "r") as file:
       self.database = json.load(file)
-
-    ''' Variables '''
-    self.menu_var = StringVar()
 
     IMG_LIST = [
       ImageTk.PhotoImage(Image.open("Image/osc.jpg")),
@@ -68,7 +75,7 @@ class Menu:
             x = 0 # column = 0 once the widgets placed in 3x3 grid
             y = y+2 # Puts the next set of menu items in the next row
           Label(self.burger_frame, text = txt).grid(column = x, row = y)
-          Button(self.burger_frame, text = price, command = lambda i=i:self.burger_info(i)).grid(column = x, row = y+1)
+          Button(self.burger_frame, text = price, command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
           x = x+1
     self.burger_frame.grid()  # Griding the desired frame
 
@@ -84,7 +91,7 @@ class Menu:
           x = 0
           y = y+2
         Label(self.withrice_frame, text = txt).grid(column = x, row = y)
-        Button(self.withrice_frame, text = price, command = lambda i=i:self.withrice_info(i)).grid(column = x, row = y+1)
+        Button(self.withrice_frame, text = price, command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.withrice_frame.grid()
 
@@ -100,7 +107,7 @@ class Menu:
           x = 0
           y = y+2
         Label(self.salads_frame, text = txt).grid(column = x, row = y)
-        Button(self.salads_frame, text = price, command = lambda i=i:self.salad_info(i)).grid(column = x, row = y+1)
+        Button(self.salads_frame, text = price, command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.salads_frame.grid()
   
@@ -116,7 +123,7 @@ class Menu:
           x = 0
           y = y+2
         Label(self.dessert_frame, text = txt).grid(column = x, row = y)
-        Button(self.dessert_frame, text = price, command = lambda i=i:self.dessert_info(i)).grid(column = x, row = y+1)
+        Button(self.dessert_frame, text = price, command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.dessert_frame.grid()
 
@@ -132,25 +139,15 @@ class Menu:
           x = 0
           y = y+2
         Label(self.drink_frame, text = txt).grid(column = x, row = y)
-        Button(self.drink_frame, text = price, command = lambda i=i:self.drink_info(i)).grid(column = x, row = y+1)
+        Button(self.drink_frame, text = price, command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.drink_frame.grid()
 
-    ''' Button Functions '''
-  def burger_info(self, info):
+  ''' Button Functions '''
+  
+  def display_info(self, info):
     Label(self.order_frame, text = info["name"]).grid()
-      
-  def withrice_info(self, info):
-    Label(self.order_frame, text = info["name"]).grid()
-
-  def salad_info(self, info):
-    Label(self.order_frame, text = info["name"]).grid()
-
-  def dessert_info(self, info):
-    Label(self.order_frame, text = info["name"]).grid()
-
-  def drink_info(self, info):
-    Label(self.order_frame, text = info["name"]).grid()
+    self.data.price_list.append(info["price"])
 
   def clear_frame(self):
     for child in self.order_frame.winfo_children():
@@ -158,6 +155,7 @@ class Menu:
       
     self.order.grid()
     self.clear_btn.grid(sticky = S)
+    print(self.data.price_list)
 
   def checkout(self):
     self.master_frame.destroy()
@@ -168,9 +166,7 @@ class Menu:
 class Checkout:
   def __init__(self, root):
     self.root = root
-
-    ''' Variables '''
-    self.change_var = IntVar()
+    self.data = Data()
 
     ''' Main Frames '''
     self.checkout_frame = Frame(root, height = 250, width = 250, highlightbackground = "black", highlightthickness = 1)
@@ -187,7 +183,7 @@ class Checkout:
     btn.grid(row = 3, column = 1, sticky = "E")
 
     ''' Displaying Elements (Again) '''
-    money_owing = Entry(self.checkout_frame, textvariable = self.change_var)
+    money_owing = Entry(self.checkout_frame, textvariable = self.data.change_var)
     order_price_display = Label(self.checkout_frame, text = None)
     self.change_display = Label(self.checkout_frame, text = None)
     money_owing.grid(row = 0, column = 1)
@@ -203,7 +199,7 @@ class Checkout:
     ''' Functions '''
   def calculate(self):
     try:
-     x = self.change_var.get()
+     x = self.data.change_var.get()
      y = 100 - x
      self.change_display.configure(text = y)
     except ValueError():
