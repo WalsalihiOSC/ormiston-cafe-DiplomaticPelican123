@@ -7,7 +7,6 @@ class Data:
   def __init__(self):
 
     ''' Variables '''
-    self.test_var = IntVar()
     self.change_var = IntVar()
     self.price_list = []
 
@@ -56,7 +55,7 @@ class Menu:
     btn6.grid(sticky = "SE")
 
     ''' Menu List Buttons '''
-    self.order = Label(self.order_frame, text = "Order List ://")
+    self.order = Label(self.order_frame, text = "Order List")
     self.order.grid()
 
     self.clear_btn = Button(self.order_frame, text = "Clear All", command = self.clear_frame)
@@ -155,18 +154,19 @@ class Menu:
       
     self.order.grid()
     self.clear_btn.grid(sticky = S)
-    print(self.data.price_list)
 
   def checkout(self):
     self.master_frame.destroy()
     self.side_fliter.destroy()
-    Checkout(root)
+    price = sum(self.data.price_list)
+    Checkout(root, price)
 
 ''' Class 2 '''
 class Checkout:
-  def __init__(self, root):
+  def __init__(self, root, price):
     self.root = root
     self.data = Data()
+    self.price = price
 
     ''' Main Frames '''
     self.checkout_frame = Frame(root, height = 250, width = 250, highlightbackground = "black", highlightthickness = 1)
@@ -182,9 +182,9 @@ class Checkout:
     change.grid(row = 2, column = 0)
     btn.grid(row = 3, column = 1, sticky = "E")
 
-    ''' Displaying Elements (Again) '''
+    ''' Displaying Elements (Data) '''
     money_owing = Entry(self.checkout_frame, textvariable = self.data.change_var)
-    order_price_display = Label(self.checkout_frame, text = None)
+    order_price_display = Label(self.checkout_frame, text = self.price)
     self.change_display = Label(self.checkout_frame, text = None)
     money_owing.grid(row = 0, column = 1)
     order_price_display.grid(row = 1, column = 1)
@@ -200,7 +200,7 @@ class Checkout:
   def calculate(self):
     try:
      x = self.data.change_var.get()
-     y = 100 - x
+     y = self.price - x
      self.change_display.configure(text = y)
     except ValueError():
       pass

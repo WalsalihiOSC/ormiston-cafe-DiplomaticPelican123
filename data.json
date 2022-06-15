@@ -1,228 +1,228 @@
 [
     {
         "name": "Chicken Burger $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Burger"
     },
     {
         "name": "Beef Burger $4.50",
-        "price": "4.50",
+        "price": 4.50,
         "category": "Burger"
     },
     {
         "name": "Vege Burger $4.50",
-        "price": "4.50",
+        "price": 4.50,
         "category": "Burger"
     },
     {
         "name": "Butter Chicken Burger $6.00",
-        "price": "6.00",
+        "price": 6.00,
         "category": "Burger"
     },
     {
         "name": "Pizza Burger $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Burger"
     },
     {
         "name": "Supreme Burger $8.00",
-        "price": "8.00",
+        "price": 8.00,
         "category": "Burger"
     },
     {
         "name": "Potato Corn $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Burger"
     },
     {
         "name": "Chilli Burger $4.00",
-        "price": "4.00",
+        "price": 4.00,
         "category": "Burger"
     },
     {
         "name": "Lamb Burger $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Burger"
     },
     {
         "name": "Butter Chicken Rice $5.50",
-        "price": "5.50",
+        "price": 5.50,
         "category": "Withrice"
     },
     {
         "name": "Lamb Curry $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Withrice"
     },
     {
         "name": "Potato Curry $4.00",
-        "price": "4.00",
+        "price": 4.00,
         "category": "Withrice"
     },
     {
         "name": "Sushi $3.00",
-        "price": "3.00",
+        "price": 3.00,
         "category": "Withrice"
     },
     {
         "name": "Katsu $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Withrice"
     },
     {
         "name": "Risotto $5.50",
-        "price": "5.50",
+        "price": 5.50,
         "category": "Withrice"
     },
     {
         "name": "Paella $6.00",
-        "price": "6.00",
+        "price": 6.00,
         "category": "Withrice"
     },
     {
         "name": "Vege Fried Rice $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Withrice",
         "size": null
     },
     {
         "name": "Onigiri $3.00",
-        "price": "3.00",
+        "price": 3.00,
         "category": "Withrice"
     },
     {
         "name": "Greek Salad $4.00",
-        "price": "4.00",
+        "price": 4.00,
         "category": "Salad"
     },
     {
         "name": "Pasta Salad $4.50",
-        "price": "4.50",
+        "price": 4.50,
         "category": "Salad"
     },
     {
         "name": "Caesar Salad $4.50",
-        "price": "4.50",
+        "price": 4.50,
         "category": "Salad"
     },
     {
         "name": "Summer Corn Salad $6.00",
-        "price": "6.00",
+        "price": 6.00,
         "category": "Salad"
     },
     {
         "name": "Chick-pea Salad $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Salad"
     },
     {
         "name": "Grilled Shrimp Salad $6.00",
-        "price": "6.00",
+        "price": 6.00,
         "category": "Salad"
     },
     {
         "name": "Macaroni Salad $6.00",
-        "price": "6.00",
+        "price": 6.00,
         "category": "Salad"
     },
     {
-        "name": "Cucumber Salad $5.69",
-        "price": "5.69",
+        "name": "Cucumber Salad $6.96",
+        "price": 6.96,
         "category": "Salad"
     },
     {
         "name": "Kale Salad $7.00",
-        "price": "7.00",
+        "price": 7.00,
         "category": "Salad"
     },
     {
         "name": "Ice Cream $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Dessert"
     },
     {
         "name": "Cheesecake $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Dessert"
     },
     {
         "name": "Banana Split $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Dessert"
     },
     {
         "name": "Carrot Cake $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Dessert"
     },
     {
         "name": "Pecan Pie $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Dessert"
     },
     {
         "name": "Apple Crumble $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Dessert"
     },
     {
         "name": "Banana Pudding $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Dessert"
     },
     {
         "name": "Cookie $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Dessert"
     },
     {
         "name": "Rice Pudding $5.00",
-        "price": "5.00",
+        "price": 5.00,
         "category": "Dessert"
     },
     {
         "name": "Coke $2.50",
-        "price": "2.50",
+        "price": 2.50,
         "category": "Drink"
     },
     {
         "name": "Sprite $2.50",
-        "price": "2.50",
+        "price": 2.50,
         "category": "Drink"
     },
     {
         "name": "Fanta $2.50",
-        "price": "2.50",
+        "price": 2.50,
         "category": "Drink"
     },
     {
         "name": "L&P $2.50",
-        "price": "2.50",
+        "price": 2.50,
         "category": "Drink"
     },
     {
         "name": "7-Up $2.50",
-        "price": "2.50",
+        "price": 2.50,
         "category": "Drink"
     },
     {
         "name": "Lift $2.50",
-        "price": "2.50",
+        "price": 2.50,
         "category": "Drink"
     },
     {
         "name": "Hot Chocolate $4.00",
-        "price": "4.00",
+        "price": 4.00,
         "category": "Drink"
     },
     {
         "name": "Latte $4.00",
-        "price": "4.00",
+        "price": 4.00,
         "category": "Drink"
     },
     {
         "name": "Chai Latte $4.00",
-        "price": "4.00",
+        "price": 4.00,
         "category": "Drink"
     }
 ]
