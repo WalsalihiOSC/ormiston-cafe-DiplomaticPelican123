@@ -20,18 +20,18 @@ class Menu:
     with open("data.json", "r") as file:
       self.database = json.load(file)
 
+    ''' Image List '''
     IMG_LIST = [
-      ImageTk.PhotoImage(Image.open("Image/osc.jpg")),
-
-    ]
+      ImageTk.PhotoImage(Image.open("Image/osc.jpg"))]
 
     ''' Main Frames '''
     self.master_frame = Frame(root, highlightbackground="black", highlightthickness = 1)
     self.side_fliter = Frame(root)
     self.order_frame = Frame(root, highlightbackground="black", highlightthickness = 1)
+    self.checkout_frame = Frame(root, height = 250, width = 250, highlightbackground = "black", highlightthickness = 1)
     self.master_frame.place(relx = 0.5, rely = 0, anchor = N)
     self.side_fliter.grid(row = 0 ,column = 0)
-    self.order_frame.place(relx = 0.8, rely = 0)
+    self.order_frame.place(relx = 0.8)
 
     ''' Menu Frames '''
     self.burger_frame = Frame(self.master_frame)
@@ -58,7 +58,7 @@ class Menu:
     self.order = Label(self.order_frame, text = "Order List")
     self.order.grid()
 
-    self.clear_btn = Button(self.order_frame, text = "Clear All", command = self.clear_frame)
+    self.clear_btn = Button(self.order_frame, text = "Clear All", command = self.clear_menu)
     self.clear_btn.grid(sticky = S)
 
     ''' Displaying Menu's Items '''  
@@ -74,7 +74,7 @@ class Menu:
             x = 0 # column = 0 once the widgets placed in 3x3 grid
             y = y+2 # Puts the next set of menu items in the next row
           Label(self.burger_frame, text = txt).grid(column = x, row = y)
-          Button(self.burger_frame, text = price, command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
+          Button(self.burger_frame, text = f"${price}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
           x = x+1
     self.burger_frame.grid()  # Griding the desired frame
 
@@ -90,7 +90,7 @@ class Menu:
           x = 0
           y = y+2
         Label(self.withrice_frame, text = txt).grid(column = x, row = y)
-        Button(self.withrice_frame, text = price, command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
+        Button(self.withrice_frame, text = f"${price}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.withrice_frame.grid()
 
@@ -106,7 +106,7 @@ class Menu:
           x = 0
           y = y+2
         Label(self.salads_frame, text = txt).grid(column = x, row = y)
-        Button(self.salads_frame, text = price, command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
+        Button(self.salads_frame, text = f"${price}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.salads_frame.grid()
   
@@ -122,7 +122,7 @@ class Menu:
           x = 0
           y = y+2
         Label(self.dessert_frame, text = txt).grid(column = x, row = y)
-        Button(self.dessert_frame, text = price, command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
+        Button(self.dessert_frame, text = f"${price}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.dessert_frame.grid()
 
@@ -138,39 +138,27 @@ class Menu:
           x = 0
           y = y+2
         Label(self.drink_frame, text = txt).grid(column = x, row = y)
-        Button(self.drink_frame, text = price, command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
+        Button(self.drink_frame, text = f"${price}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.drink_frame.grid()
 
   ''' Button Functions '''
-  
   def display_info(self, info):
     Label(self.order_frame, text = info["name"]).grid()
     self.data.price_list.append(info["price"])
 
-  def clear_frame(self):
+  def clear_menu(self):
     for child in self.order_frame.winfo_children():
       child.grid_forget()
-      
     self.order.grid()
     self.clear_btn.grid(sticky = S)
 
   def checkout(self):
+    self.clear_btn.configure(state = DISABLED)
     self.master_frame.destroy()
     self.side_fliter.destroy()
-    price = sum(self.data.price_list)
-    Checkout(root, price)
-
-''' Class 2 '''
-class Checkout:
-  def __init__(self, root, price):
-    self.root = root
-    self.data = Data()
-    self.price = price
-
-    ''' Main Frames '''
-    self.checkout_frame = Frame(root, height = 250, width = 250, highlightbackground = "black", highlightthickness = 1)
     self.checkout_frame.place(relx = 0.5, rely = 0.5, anchor = CENTER)
+    self.price = sum(self.data.price_list)
 
     ''' Displaying Elements '''
     money = Label(self.checkout_frame, text = "Give Money Here:")
@@ -184,7 +172,7 @@ class Checkout:
 
     ''' Displaying Elements (Data) '''
     money_owing = Entry(self.checkout_frame, textvariable = self.data.change_var)
-    order_price_display = Label(self.checkout_frame, text = self.price)
+    order_price_display = Label(self.checkout_frame, text = f"${self.price}")
     self.change_display = Label(self.checkout_frame, text = None)
     money_owing.grid(row = 0, column = 1)
     order_price_display.grid(row = 1, column = 1)
@@ -200,8 +188,13 @@ class Checkout:
   def calculate(self):
     try:
      x = self.data.change_var.get()
-     y = self.price - x
-     self.change_display.configure(text = y)
+     y = x - self.price
+     self.change_display.configure(text = f"${y}")
+
+     if x <self.price:
+      self.change_display.configure(text = "Gimmie More Money!!!")
+     elif x == self.price:
+      self.change_display.configure(text = "No Change")
     except ValueError():
       pass
 
@@ -210,9 +203,11 @@ class Checkout:
 
   def new_order(self):
     self.checkout_frame.destroy()
+    self.data.price_list.clear()
+    self.order_frame.destroy()
     Menu(root)
 
-
+''' Main Routine '''
 if __name__ == "__main__":
   root = Tk()
   Menu(root)
