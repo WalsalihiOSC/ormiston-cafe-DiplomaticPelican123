@@ -20,10 +20,6 @@ class Menu:
     with open("data.json", "r") as file:
       self.database = json.load(file)
 
-    ''' Image List '''
-    IMG_LIST = [
-      ImageTk.PhotoImage(Image.open("Image/osc.jpg"))]
-
     ''' Main Frames '''
     self.master_frame = Frame(root, highlightbackground="black", highlightthickness = 1)
     self.side_fliter = Frame(root)
@@ -74,7 +70,7 @@ class Menu:
             x = 0 # column = 0 once the widgets placed in 3x3 grid
             y = y+2 # Puts the next set of menu items in the next row
           Label(self.burger_frame, text = txt).grid(column = x, row = y)
-          Button(self.burger_frame, text = f"${price}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
+          Button(self.burger_frame, text = f"${price:.2f}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
           x = x+1
     self.burger_frame.grid()  # Griding the desired frame
 
@@ -90,7 +86,7 @@ class Menu:
           x = 0
           y = y+2
         Label(self.withrice_frame, text = txt).grid(column = x, row = y)
-        Button(self.withrice_frame, text = f"${price}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
+        Button(self.withrice_frame, text = f"${price:.2f}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.withrice_frame.grid()
 
@@ -106,7 +102,7 @@ class Menu:
           x = 0
           y = y+2
         Label(self.salads_frame, text = txt).grid(column = x, row = y)
-        Button(self.salads_frame, text = f"${price}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
+        Button(self.salads_frame, text = f"${price:.2f}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.salads_frame.grid()
   
@@ -122,7 +118,7 @@ class Menu:
           x = 0
           y = y+2
         Label(self.dessert_frame, text = txt).grid(column = x, row = y)
-        Button(self.dessert_frame, text = f"${price}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
+        Button(self.dessert_frame, text = f"${price:.2f}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.dessert_frame.grid()
 
@@ -138,7 +134,7 @@ class Menu:
           x = 0
           y = y+2
         Label(self.drink_frame, text = txt).grid(column = x, row = y)
-        Button(self.drink_frame, text = f"${price}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
+        Button(self.drink_frame, text = f"${price:.2f}", command = lambda i=i:self.display_info(i)).grid(column = x, row = y+1)
         x = x+1
     self.drink_frame.grid()
 
