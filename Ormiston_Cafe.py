@@ -1,6 +1,5 @@
 import json
 from tkinter import *
-from PIL import ImageTk,Image # Make sure to "pip install PILLOW"
 
 ''' Data Class '''
 class Data:
